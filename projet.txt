@@ -1,4 +1,4 @@
-
+﻿
 Création de la base de donnée DONE
 
 1. BDD USERS
@@ -35,3 +35,5 @@ Dans le catalogue:
 BONUS
 
 Ajouter un forgot password et reset password
+
+Ajouter les compatibilités internet

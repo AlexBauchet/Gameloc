@@ -1,0 +1,37 @@
+
+Création de la base de donnée DONE
+
+1. BDD USERS
+
+
+2. BDD JEUXVIDEO
+
+___________________________________
+
+Intégration HTML
+
+
+Lien bootstrap
+
+Faire plusieurs pages (accueil, inscription, connexion, catalogue)
+
+1. Accueil ( Logo, Description, Boutons Inscription/Connexion)
+
+2. Inscription (formulaire)
+
+3. Connexion (email, mdp)
+
+4. Catalogue (Affichage base de donnée)
+
+_____________________________________
+Dynamiser le site
+/!\ Réutiliser le cours session (pour inscription, connexion, ...)
+
+Dans le catalogue: 
+- ajouter un filtre et recherche (recherche plateforme, dispo) 
+- Tri et pagination (date ajout et ordre alphabetique)
+
+
+BONUS
+
+Ajouter un forgot password et reset password

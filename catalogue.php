@@ -1,6 +1,13 @@
 <?php
+	session_start();
+	require(__DIR__.'/functions.php');
 
-include(__DIR__.'/config/db.php');
+	checkLoggedIn();
+
+
+	include(__DIR__.'/config/db.php');
+
+
 // echo __DIR__;
 
 

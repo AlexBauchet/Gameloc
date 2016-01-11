@@ -5,15 +5,9 @@
 
 	// Vérifie que le button submit a été cliqué
 	if(isset($_POST['action'])) {
-		$email = trim(htmlentities($_POST['emailId']));
-		$password = trim(htmlentities($_POST['passwordId']));
-		$passwordConfirm = trim(htmlentities($_POST['passwordConfirmId']));
-		$lastName = trim(htmlentities($_POST['lastNameId']));
-		$firstName = trim(htmlentities($_POST['firstNameId']));
-		$address = trim(htmlentities($_POST['addressId']));
-		$zipcode = trim(htmlentities($_POST['zipcodeId']));
-		$town = trim(htmlentities($_POST['townId']));
-		$phone = trim(htmlentities($_POST['phoneId']));
+		$email = trim(htmlentities($_POST['email']));
+		$password = trim(htmlentities($_POST['password']));
+	
 
 		// Initialisation d'un tableau d'erreurs
 		$errors = [];
@@ -36,15 +30,15 @@
 				$_SESSION['user'] = $resultUser;
 
 				// On redirige l'utilisateur vers la page protégé profile.php
-				header("Location: profile.php");
+				header("Location: catalogue.php");
 				die();
 			}
 			else {
-				$errors['password'] = "Wrong password.";
+				$errors['password'] = "Mauvais mot de passe";
 			}
 		}
 		else {
-			$errors['user'] = "User with email not found.";
+			$errors['user'] = "Votre mail n'existe pas.";
 		}
 
 		$_SESSION['loginErrors'] = $errors;

@@ -23,10 +23,10 @@
 
 		// Check du champs email
 		if(empty($email) || (filter_var($email, FILTER_VALIDATE_EMAIL)) === false) {
-			$errors['email'] = "Wrong email.";
+			$errors['email'] = "Votre adresse mail est incorrecte.";
 		}
 		elseif(strlen($email) > 60) {
-			$errors['email'] = "Email too long.";
+			$errors['email'] = "Votre mail est trop long.";
 		}
 		else {
 			// Je vérifie que l'email existe pas déjà dans ma bdd
@@ -37,7 +37,7 @@
 			$resultEmail = $query->fetch();
 
 			if($resultEmail['email']) {
-				$errors['email'] = "Email already exists.";
+				$errors['email'] = "Votre adresse mail existe déjà.";
 			}
 		}
 
@@ -47,10 +47,10 @@
 		// 3. Conditions de caractères dans le password
 
 		if($password != $passwordConfirm) {
-			$errors['password'] = "Not same passwords.";
+			$errors['password'] = "Mots de passe différents.";
 		}
 		elseif(strlen($password) <= 6) {
-			$errors['password'] = "Password too short.";
+			$errors['password'] = "Mot de passe trop court.";
 		}
 		else {
 			// Le password contient au moins une lettre ?
@@ -62,7 +62,7 @@
 
 			// Si une des conditions n'est pas remplie ... erreur
 			if(!$containsLetter || !$containsDigit || !$containsSpecial) {
-				$errors['password'] = "Choose a best password with at least one letter, one number and one special character.";
+				$errors['password'] = "Choisissez un meilleur mot de passe, avec au moins une lettre, un chiffre et un caractère spécial.";
 			}
 		}
 

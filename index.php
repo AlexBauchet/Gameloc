@@ -1,3 +1,7 @@
+<?php
+	session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,8 +22,8 @@
 		  	<p>Bienvenue dans la plus grande communauté de gamers sur Paris !</p><br />
 		  <p>Nous mettons les gamers en relation pour qu'il puisse s'échanger les jeux vidéos de n'importe quel platforme<br /> (PC, XBOX, PS4)</p>
 
-		 <button type="submit" name="action" class="btn btn-default">Submit</button>
-		 <button type="log" name="action" class="btn btn-default">LogIn</button>
+		 <button type="submit" name="action" action="register.php" class="btn btn-success">Inscription</button>
+		 <button type="log" name="action" class="btn btn-primary">Connexion</button>
 		  </div>
 		 </div> 		 
 	</div>	

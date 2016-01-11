@@ -41,47 +41,47 @@
 					<form method="POST" action="registerHandler.php">
 						<div class="form-group">
 			              <label for="email">Email</label>
-			              <input type="text" class="form-control" id="emailId" name="email" placeholder="Email">
+			              <input type="text" class="form-control" id="email" name="email" placeholder="Email">
 			            </div>
 
 			            <div class="form-group">
 			              <label for="password">Mot de passe</label>
-			              <input type="password" class="form-control" id="passwordId" name="password" placeholder="Votre mot de passe">
+			              <input type="password" class="form-control" id="password" name="password" placeholder="Votre mot de passe">
 			            </div>
 
 			            <div class="form-group">
 			              <label for="passwordConfirm">Confirmez votre mot de passe</label>
-			              <input type="password" class="form-control" id="passwordConfirmId" name="passwordConfirm" placeholder="Confirmez votre mot de passe">
+			              <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" placeholder="Confirmez votre mot de passe">
 			            </div>
 
 			            <div class="form-group">
-			              <label for="lastName">Votre Prénom</label>
-			              <input type="text" class="form-control" id="lastNameId" name="lastName" placeholder="Votre prenom">
+			              <label for="lastname">Votre Prénom</label>
+			              <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Votre prenom">
 			            </div>
 
 			            <div class="form-group">
-			              <label for="firstName">Votre Nom</label>
-			              <input type="text" class="form-control" id="firstNameId" name="firstName" placeholder="Votre Nom">
+			              <label for="firstname">Votre Nom</label>
+			              <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Votre Nom">
 			            </div>
 
 			            <div class="form-group">
 			              <label for="address">Votre Adresse</label>
-			              <input type="text" class="form-control" id="addressId" name="address" placeholder="Votre Adresse">
+			              <input type="text" class="form-control" id="address" name="address" placeholder="Votre Adresse">
 			            </div>
 
 			            <div class="form-group">
 			              <label for="zip">Votre code postal</label>
-			              <input type="text" class="form-control" id="zipId" name="zip" pattern="[0-9]{5}" placeholder="Votre code postal">
+			              <input type="text" class="form-control" id="zipcode" name="zipcode" pattern="[0-9]{5}" placeholder="Votre code postal">
 			            </div>
 
 			            <div class="form-group">
 			              <label for="town">Votre Ville</label>
-			              <input type="text" class="form-control" id="townId" name="town" placeholder="Votre Ville">
+			              <input type="text" class="form-control" id="town" name="town" placeholder="Votre Ville">
 			            </div>
 
 			            <div class="form-group">
 			              <label for="phone">Votre Téléphone</label>
-			              <input type="tel" class="form-control" id="phoneId" name="phone" placeholder="Votre numéro de téléphone">
+			              <input type="tel" class="form-control" id="phone" name="phone" placeholder="Votre numéro de téléphone">
 			            </div>
 
 			            <button type="submit" name="action" class="btn btn-primary">Valider</button>

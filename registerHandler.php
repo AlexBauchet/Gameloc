@@ -7,15 +7,15 @@
 	// Vérifie que le button submit a été cliqué
 	if(isset($_POST['action'])) {
 		// Affecte une variable à chaque valeur clé de $_POST
-		$email = trim(htmlentities($_POST['emailId']));
-		$password = trim(htmlentities($_POST['passwordId']));
-		$passwordConfirm = trim(htmlentities($_POST['passwordConfirmId']));
-		$lastName = trim(htmlentities($_POST['lastNameId']));
-		$firstName = trim(htmlentities($_POST['firstNameId']));
-		$address = trim(htmlentities($_POST['addressId']));
-		$zipcode = trim(htmlentities($_POST['zipcodeId']));
-		$town = trim(htmlentities($_POST['townId']));
-		$phone = trim(htmlentities($_POST['phoneId']));
+		$email = trim(htmlentities($_POST['email']));
+		$password = trim(htmlentities($_POST['password']));
+		$passwordConfirm = trim(htmlentities($_POST['passwordConfirm']));
+		$lastname = trim(htmlentities($_POST['lastname']));
+		$firstname = trim(htmlentities($_POST['firstname']));
+		$address = trim(htmlentities($_POST['address']));
+		$zipcode = trim(htmlentities($_POST['zipcode']));
+		$town = trim(htmlentities($_POST['town']));
+		$phone = trim(htmlentities($_POST['phone']));
 
 
 		// Initialisation d'un tableau d'erreurs
@@ -74,8 +74,8 @@
 
 		// S'il a pas d'erreurs, j'enregistre l'utilisateur en bdd
 		if(empty($errors)) {
-			$query = $pdo->prepare('INSERT INTO users(email, password, lastname, firstname, address, zipcode, town, phone)
-									VALUES(:email, :password, :lastname, :firstname, :address, :zipcode, :town, :phone ');
+			$query = $pdo->prepare('INSERT INTO users (email, password, lastname, firstname, address, zipcode, town, phone)
+									VALUES (:email, :password, :lastname, :firstname, :address, :zipcode, :town, :phone)');
 			$query->bindValue(':email', $email, PDO::PARAM_STR);
 			$query->bindValue(':lastname', $lastname, PDO::PARAM_STR);
 			$query->bindValue(':firstname', $firstname, PDO::PARAM_STR);

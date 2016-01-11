@@ -87,6 +87,8 @@
 			            <button type="submit" name="action" class="btn btn-primary">Valider</button>
 					</form>
 				</div>
+			</div>
+		</div>		
 
 </body>
 </html>

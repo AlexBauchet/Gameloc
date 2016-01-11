@@ -38,7 +38,7 @@
 					<?php endif; ?>
 
 					<!-- Copié de bootstrap : http://getbootstrap.com/css/#forms -->
-					<form method="POST" action="register.php">
+					<form method="POST" action="registerHandler.php">
 						<div class="form-group">
 			              <label for="email">Email</label>
 			              <input type="text" class="form-control" id="emailId" name="email" placeholder="Email">
@@ -84,7 +84,7 @@
 			              <input type="tel" class="form-control" id="phoneId" name="phone" placeholder="Votre numéro de téléphone">
 			            </div>
 
-			            <button type="submit" name="action" action="registerHandler.php" class="btn btn-primary">Valider</button>
+			            <button type="submit" name="action" class="btn btn-primary">Valider</button>
 					</form>
 				</div>
 

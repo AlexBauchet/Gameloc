@@ -1,0 +1,19 @@
+
+<div class="jumbotron">
+  <div class="container">
+  <div class="row">
+  <div class="col-md-6 col-md-offset-4">
+
+  
+	<img src="public/img/logo-steam.png"></img>
+	<h1>Gameloc</h1>
+	
+	<p><?php echo $page ; ?></a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+

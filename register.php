@@ -2,6 +2,9 @@
 	session_start();
 
 	require(__DIR__.'/config/db.php');
+
+	$page ='Register';
+
 ?>	
 
 <!DOCTYPE html>
@@ -12,6 +15,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 </head>
 <body>
+<?php include(__DIR__.'/include/nav.php');?>
 
 <div class="container">
 			<div class="row">
@@ -24,7 +28,7 @@
 				<?php endif; ?>
 
 				<div class="col-md-6">
-					<h1>Formulaire d'inscription</h1>
+					
 
 					<!-- Affiche les erreurs stockés en session avec la clé registerErrors -->
 					<?php if(isset($_SESSION['registerErrors'])): ?>

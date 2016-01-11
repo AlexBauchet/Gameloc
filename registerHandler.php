@@ -113,7 +113,7 @@
 			$_SESSION['registerErrors'] = $errors;
 
 			// On redirige dans l'index
-			header("Location: index.php");
+			header("Location: register.php");
 			die();
 		}
 

@@ -12,16 +12,16 @@
 
 	<div class="container">
 		<div class="row">
-		  <div class="col-md-5 col-md-offset-3">
-		  <img src="public/img/steam_logo.png"></img>
-		  	<h1>Gameloc</h1>
-		  	<p>Bienvenue dans la plus grande communauté de gamers sur Paris !</p><br />
-		  <p>Nous mettons les gamers en relation pour qu'il puisse s'échanger les jeux vidéos de n'importe quel platforme<br /> (PC, XBOX, PS4)</p>
+			<div class="col-md-5 col-md-offset-3">
+				<img src="public/img/steam_logo.png"></img>
+				<h1>Gameloc</h1>
+				<p>Bienvenue dans la plus grande communauté de gamers sur Paris !</p><br />
+				<p>Nous mettons les gamers en relation pour qu'il puisse s'échanger les jeux vidéos de n'importe quel platforme<br /> (PC, XBOX, PS4)</p>
 
-		 <button type="submit" name="action" class="btn btn-default">Submit</button>
-		 <button type="log" name="action" class="btn btn-default">LogIn</button>
-		  </div>
-		 </div> 		 
+				<button type="submit" name="action" class="btn btn-default">Submit</button>
+				<button type="log" name="action" class="btn btn-default">LogIn</button>
+			</div>
+
 	</div>	
 		    
 		

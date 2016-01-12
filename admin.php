@@ -52,6 +52,11 @@ $resultCount = $query->fetch();
     			margin-right: auto ;						 
 			}
 
+			.display {
+				display: inline;
+
+			}
+
 
 		</style>
 
@@ -62,46 +67,49 @@ $resultCount = $query->fetch();
 
 		<?php include(__DIR__.'/include/nav.php');?>
 
-		<div>
-		<div>
-			<h1>Statistique</h1>
-			<p>Le site contient <?php echo $totalUsers; ?> utilisateur(s).</p>
-		</div>
-		
-
-
-		<h1>Localisation des utilisateurs</h1>
-		<div id="map"></div>
-		
-		<script type="text/javascript">
-
-			var map;
-
-			var myLatLng = {lat: 48.8909964, lng: 2.2345892};
-			function initMap() {
-				map = new google.maps.Map(document.getElementById('map'), {
-					center: {lat: 48.8534100, lng: 2.3488000},
-					zoom: 12
-				});
-
-				var marker = new google.maps.Marker({
-					position : myLatLng,  
-					map: map,
-					title: 'hello'
-				})
-
-			}
-		</script>
-
-		<script async defer
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApFHyhOE1lniNGNo0yrkthO-wEUp4OOzM&callback=initMap">
-	</script>
 	
+		
+			<div class="col-md-offset-1">
 
-<h1>Les derniers jeux ajoutés par les nouveaux inscrits</h1>
+				<div id="stats">
+					<h1>Statistique</h1>
+					<p>Le site contient <?php echo $totalUsers; ?> utilisateur(s).</p>
+				</div>
+				
+				<h1>Localisation des utilisateurs</h1>
+				<div id="map"></div>
+				
+				<script type="text/javascript">
+
+					var map;
+
+					var myLatLng = {lat: 48.8909964, lng: 2.2345892};
+					function initMap() {
+						map = new google.maps.Map(document.getElementById('map'), {
+							center: {lat: 48.8534100, lng: 2.3488000},
+							zoom: 12
+						});
+
+						var marker = new google.maps.Marker({
+							position : myLatLng,  
+							map: map,
+							title: 'hello'
+						})
+
+					}
+				</script>
+
+				<script async defer
+				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApFHyhOE1lniNGNo0yrkthO-wEUp4OOzM&callback=initMap">
+			</script>
+			
+
+					<h1>Les derniers jeux ajoutés par les nouveaux inscrits</h1>
 
 
-</div>
+			   </div>
+		  </div>
+	 </div>  
 
 </body>
 </html>

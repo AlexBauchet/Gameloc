@@ -54,6 +54,10 @@
 			              <input type="password" class="form-control" id="password" name="password" placeholder="Votre mot de passe">
 			            </div>
 
+			            <div class="form-group">
+			            	<p class="help-block"><a href="forgotPassword.php">Mot de passe oublié ?</a></p>
+			            </div>
+
 
 			            <button type="submit" name="action" class="btn btn-primary">Valider</button>
 					</form>

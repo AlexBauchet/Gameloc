@@ -35,7 +35,8 @@ Ajouter les compatibilités internet
 
 TODOLIST
 
-approfondir la barre de recherche avec type platforme, genre
-location geocode
+approfondir la barre de recherche avec type plateforme, genr
+elocation geocode
 ajouter dans la bdd jeu(genre, création topic, update topic, location)
 ajouter dans la bdd user(localisation)
+forgot password

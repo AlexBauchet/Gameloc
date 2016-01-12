@@ -127,6 +127,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'create')) {
 	<title>Gameloc</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="public/css/style.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 </head>
 <body>
@@ -135,56 +136,94 @@ if (isset($_POST['action']) && ($_POST['action'] == 'create')) {
 		<div class="row">
 			<div class="col-md-4">
 
+
 						<!-- Moteur de recherche de film en GET -->
-			
+			<div id="fondRecherche" class="col-md-2">
 				<hr />
 					<form id="search-form" method="GET" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 						<div class="form-group">
 							<label for="GameName">Rechercher un jeu</label>
 							<input type="text" class="form-control" id="GameName" name="GameName" />
 						</div>
-						<button type="submit" class="btn btn-primary" name="action" value="search">OK</button>
+
+						<div>
+							<label>Plateforme</label>
+							<select class="form-control">
+							<option>Tous</option>
+							<option>Xbox One</option>
+							<option>PC</option>
+							<option>PS4</option>
+							</select>							
+						</div>
+						<br>
+
+						<div >
+							<label>Type de jeu</label>
+							<select class="form-control">
+							<option>Tous</option>
+							<option>RPG</option>
+							<option>FPS</option>
+							<option>Stratégie</option>
+							<option>Gestion</option>
+							<option>Combat</option>
+							<option>Action</option>
+							<option>Aventure</option>
+							<option>Sport</option>
+							<option>Course</option>
+							</select>							
+						</div>
+						<br>
+
+						<div>
+							<input type="checkbox"> Disponible immédiatement</button>
+						</div>
+						<br>
+
+						<button type="submit" class="btn btn-primary" name="action" value="search">Rechercher</button>
 					</form>
 				<hr />
+			</div>
 			
 
 
 									<!-- Formulaire d'ajout de film en POST -->
-			<form id="add-form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-				<fieldset>
-					<legend>Ajouter un jeu</legend>
+			<div class="">
+				<form id="add-form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+					<fieldset>
+						<legend>Ajouter un jeu</legend>
 
+				
 			
-		
-					<div class="form-group">
-						<label for="name">Nom du jeu</label>
-						<input type="text" class="form-control" id="name" name="name" />
-					</div>
+						<div class="form-group">
+							<label for="name">Nom du jeu</label>
+							<input type="text" class="form-control" id="name" name="name" />
+						</div>
 
-					<div class="form-group">
-						<label for="description">Description</label>
-						<input type="text" class="form-control" id="description" name="description" />
-					</div>
+						<div class="form-group">
+							<label for="description">Description</label>
+							<input type="text" class="form-control" id="description" name="description" />
+						</div>
 
-					<div class="form-group">
-						<label for="image">Image</label>
-						<input type="text" class="form-control" id="image" name="image" />
-					</div>
+						<div class="form-group">
+							<label for="image">Image</label>
+							<input type="text" class="form-control" id="image" name="image" />
+						</div>
 
-					<div class="form-group">
-						<label for="date_published">Date de sortie</label>
-						<input type="text" class="form-control" id="date_published" name="date_published" />
-					</div>
+						<div class="form-group">
+							<label for="date_published">Date de sortie</label>
+							<input type="text" class="form-control" id="date_published" name="date_published" />
+						</div>
 
-					<div class="form-group">
-						<label for="game_time">Temps de jeu</label>
-						<input type="text" class="form-control" id="game_time" name="game_time" />
-					</div>
+						<div class="form-group">
+							<label for="game_time">Temps de jeu</label>
+							<input type="text" class="form-control" id="game_time" name="game_time" />
+						</div>
 
-					
-					<button type="submit" class="btn btn-danger" name="action" value="create" onclick="">Créer</button>
-				</fieldset>
-			</form>
+						
+						<button type="submit" class="btn btn-danger" name="action" value="create" onclick="">Créer</button>
+					</fieldset>
+				</form>
+			</div>
 		</div>
 
 

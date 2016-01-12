@@ -132,13 +132,16 @@ if (isset($_POST['action']) && ($_POST['action'] == 'create')) {
 </head>
 <body>
 <?php include(__DIR__.'/include/nav.php');?>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-4">
+	
+			
 
 
 						<!-- Moteur de recherche de film en GET -->
-			<div id="fondRecherche" class="col-md-2">
+
+
+	<div class="row" id="cssRow">
+		<div class="col-md-3">				
+			<div id="fondRecherche">
 				<hr />
 					<form id="search-form" method="GET" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 						<div class="form-group">
@@ -183,11 +186,13 @@ if (isset($_POST['action']) && ($_POST['action'] == 'create')) {
 					</form>
 				<hr />
 			</div>
+		</div>
+	</div>
 			
 
 
 									<!-- Formulaire d'ajout de film en POST -->
-			<div class="">
+			<!-- <div class="">
 				<form id="add-form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 					<fieldset>
 						<legend>Ajouter un jeu</legend>
@@ -224,7 +229,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'create')) {
 					</fieldset>
 				</form>
 			</div>
-		</div>
+		</div> -->
 
 
 
@@ -233,41 +238,62 @@ if (isset($_POST['action']) && ($_POST['action'] == 'create')) {
 
 
 						<!-- Liste des jeux video du catalogue -->
-			<div class="col-md-8">
+	<div class="container">				
+		<div class="row">
+			<div class="col-md-1">
 				<?php if(!empty($allGames)): ?>
 					<?php foreach ($allGames as $keyGames => $games) : ?>
 						<div>
-							<dl class="dl-horizontal">
+							<table class="table">
 							
-								<dd><img id="image" src="<?php echo $games['image']; ?>" target="_blank"></img><dd>
+								<tr><img id="image" src="<?php echo $games['image']; ?>" target="_blank"></img><tr>
 							
 
 							
-								<dt>Titre </dt>
-								<dd><?php echo $games['name']; ?></dd> 
-								<dt>Description :</dt>
-								<dd><?php echo substr($games['description'], 0, 550); ?>...</dd> 
-								<dt>Date de sortie : </dt>
-								<dd><?php echo ($games['date_published']); ?></dd>
-								<dt>Temps de jeu :</dt>
-								<dd><?php echo ($games['game_time']); ?></dd>
-								<dt>aze</dt>
-								<dd>ddd</dd>
+								<td>Titre </td>
+								<td><?php echo $games['name']; ?></td> 
+								<td>Description :</td>
+								<td><?php echo substr($games['description'], 0, 550); ?>...</td> 
+								<td>Date de sortie : </td>
+								<td><?php echo ($games['date_published']); ?></td>
+								<td>Temps de jeu :</td>
+								<td><?php echo ($games['game_time']); ?></td>
+								<td>aze</td>
+								<td>ddd</td>
 								
-							</dl>	
+							</table>	
 
 						</div>
 					<?php endforeach; ?>
 				<?php else: ?>
 				<h5>Désolé, aucun jeu ne correspond a votre recherche.</h5>
 				<?php endif; ?>
-
-			</div>
-			
-							
 			</div>
 		</div>
-	</div>
+	</div>		
+
+<div>
+	<nav>
+	  <ul class="pagination">
+	    <li>
+	      <a href="#" aria-label="Previous">
+	        <span aria-hidden="true">&laquo;</span>
+	      </a>
+	    </li>
+	    <li><a href="#">1</a></li>
+	    <li><a href="#">2</a></li>
+	    <li><a href="#">3</a></li>
+	    <li><a href="#">4</a></li>
+	    <li><a href="#">5</a></li>
+	    <li>
+	      <a href="#" aria-label="Next">
+	        <span aria-hidden="true">&raquo;</span>
+	      </a>
+	    </li>
+	  </ul>
+	</nav>
+</div>	
+
 
 
 </body>

@@ -2,7 +2,7 @@
 	session_start();
 	
 	require(__DIR__.'/functions.php');
-	// checkLoggedIn();
+	checkLoggedIn();
 
 	$page ='Catalogue';
 
@@ -13,7 +13,7 @@
 // echo __DIR__;
 
 
-	$query = $pdo->prepare('SELECT * FROM jeux_video');
+	$query = $pdo->prepare('SELECT * FROM games');
 	// $query-> bindValue(':gameName', '%'.$gameName.'%', PDO::PARAM_STR);
 	$query->execute();
 
@@ -32,21 +32,7 @@
 // $allActors = $query->fetchAll();
 // }
 
-/*		AJOUT DE JEUX DANS LA BDD
 
-if(isset($_POST['name'])) {
-	$newMovieName = $_POST['name'];
-	$newSynopsis = $_POST['description'];
-	echo $newMovieName.'<br>';
-	echo $newSynopsis;
-
-	$query = $pdo->prepare('INSERT INTO movies(name, synopsis) VALUES(:name, :synopsis)');
-	$query->bindValue(':name', $newMovieName, PDO::PARAM_STR);
-	$query->bindValue(':synopsis', $newSynopsis, PDO::PARAM_STR);
-	$query->execute();
-}
-
-*/
 
 // echo '<pre>';
 // print_r($gameName);
@@ -60,18 +46,18 @@ if(isset($_POST['name'])) {
 if(isset($_GET['GameName'])) {
 	$GameName = $_GET['GameName'];
 
-	$query = $pdo->prepare('SELECT * FROM jeux_video WHERE name LIKE ?');
+	$query = $pdo->prepare('SELECT * FROM games WHERE name LIKE ?');
 	$query->bindValue(1, '%'.$GameName.'%', PDO::PARAM_STR);
 	$query->execute();
 
 	$allGames = $query->fetchAll();
 } else {
-	$query = $pdo->prepare('SELECT * FROM jeux_video'); // Prépare la requête
+	$query = $pdo->prepare('SELECT * FROM games'); // Prépare la requête
 	$query->execute();
 	$allMovies = $query->fetchAll();
 }
 
-$query = $pdo->prepare('SELECT id, name FROM jeux_video'); // Prépare la requête
+$query = $pdo->prepare('SELECT id, name FROM games'); // Prépare la requête
 $query->execute();
 $allActors = $query->fetchAll();
 
@@ -90,7 +76,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'create')) {
 
 	
 
-	$query = $pdo->prepare('INSERT INTO jeux_video(name, description, image, date_published, game_time) VALUES(?, ?, ?, ?, ?)');
+	$query = $pdo->prepare('INSERT INTO games(name, description, url_image, published_at, game_time) VALUES(?, ?, ?, ?, ?)');
 	$query->bindValue(1, $name, PDO::PARAM_STR);
 	$query->bindValue(2, $description, PDO::PARAM_STR);
 	$query->bindValue(3, $image, PDO::PARAM_STR);
@@ -189,53 +175,6 @@ if (isset($_POST['action']) && ($_POST['action'] == 'create')) {
 		</div>
 	</div>
 			
-
-
-									<!-- Formulaire d'ajout de film en POST -->
-			<!-- <div class="">
-				<form id="add-form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-					<fieldset>
-						<legend>Ajouter un jeu</legend>
-
-				
-			
-						<div class="form-group">
-							<label for="name">Nom du jeu</label>
-							<input type="text" class="form-control" id="name" name="name" />
-						</div>
-
-						<div class="form-group">
-							<label for="description">Description</label>
-							<input type="text" class="form-control" id="description" name="description" />
-						</div>
-
-						<div class="form-group">
-							<label for="image">Image</label>
-							<input type="text" class="form-control" id="image" name="image" />
-						</div>
-
-						<div class="form-group">
-							<label for="date_published">Date de sortie</label>
-							<input type="text" class="form-control" id="date_published" name="date_published" />
-						</div>
-
-						<div class="form-group">
-							<label for="game_time">Temps de jeu</label>
-							<input type="text" class="form-control" id="game_time" name="game_time" />
-						</div>
-
-						
-						<button type="submit" class="btn btn-danger" name="action" value="create" onclick="">Créer</button>
-					</fieldset>
-				</form>
-			</div>
-		</div> -->
-
-
-
-
-
-
 
 						<!-- Liste des jeux video du catalogue -->
 	<div class="container">				

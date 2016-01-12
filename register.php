@@ -3,7 +3,7 @@
 
 	require(__DIR__.'/config/db.php');
 
-	$page ='Register';
+	$page ='Inscription';
 
 ?>	
 
@@ -27,7 +27,7 @@
 					</div>
 				<?php endif; ?>
 
-				<div class="col-md-6">
+				<div class="col-md-6 col-md-offset-4">
 					
 
 					<!-- Affiche les erreurs stockés en session avec la clé registerErrors -->

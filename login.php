@@ -4,7 +4,7 @@
 
 
 	require(__DIR__.'/config/db.php');
-	$page ='Login';
+	$page ='Connexion';
 ?>	
 
 <!DOCTYPE html>

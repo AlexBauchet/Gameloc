@@ -30,6 +30,7 @@ Dans le catalogue:
 BONUS
 Ajouter un forgot password et reset password
 Ajouter les compatibilités internet
+forgot password
 
 
 
@@ -39,4 +40,3 @@ approfondir la barre de recherche avec type plateforme, genr
 elocation geocode
 ajouter dans la bdd jeu(genre, création topic, update topic, location)
 ajouter dans la bdd user(localisation)
-forgot password

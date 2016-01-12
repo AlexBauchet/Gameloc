@@ -21,7 +21,7 @@ Faire plusieurs pages (accueil, inscription, connexion, catalogue)
 
 _____________________________________
 Dynamiser le site
-/!\ Réutiliser le cours session (pour inscription, connexion, ...)
+DONE Réutiliser le cours session (pour inscription, connexion, ...)
 
 Dans le catalogue: 
 - ajouter un filtre et recherche (recherche plateforme, dispo) 
@@ -30,13 +30,10 @@ Dans le catalogue:
 BONUS
 Ajouter un forgot password et reset password
 Ajouter les compatibilités internet
-forgot password
-
 
 
 TODOLIST
 
-approfondir la barre de recherche avec type plateforme, genr
-elocation geocode
-ajouter dans la bdd jeu(genre, création topic, update topic, location)
+approfondir la barre de recherche avec type plateforme
+ajouter dans la bdd jeu(création topic, update topic, location)
 ajouter dans la bdd user(localisation)

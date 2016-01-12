@@ -19,28 +19,7 @@
 
 	$allGames = $query->fetchAll();
 
-	// print_r($allGames);
-
-// else {
-
-// 	$query = $pdo->prepare('SELECT * FROM jeux_video'); // Prepare la requete
-// 	$query->execute();
-// 	$allMovies = $query->fetchAll();
-
-// $query = $pdo->prepare('SELECT id, name FROM jeux_video'); // Prepare la requete
-// $query->execute();
-// $allActors = $query->fetchAll();
-// }
-
-
-
-// echo '<pre>';
-// print_r($gameName);
-//  echo '</pre>';
-
-
-
-
+	
 // MOTEUR DE RECHERCHE
 
 if(isset($_GET['GameName'])) {
@@ -62,45 +41,60 @@ $query->execute();
 $allActors = $query->fetchAll();
 
 
+	// RECHERCHE AVEC LA PLATEFORME ET LA DISPONIBILITE
 
-// ENVOI FORMULAIRE DES JEUX DANS LA BDD -> check la value du btn submit
-if (isset($_POST['action']) && ($_POST['action'] == 'create')) {
-	$name = trim(htmlentities($_POST['name']));
-	$description = trim(htmlentities($_POST['description']));
-	$image = trim(htmlentities($_POST['image']));
-	$date_published = trim(htmlentities($_POST['date_published']));
-	$game_time = trim(htmlentities($_POST['game_time']));
-
-	// Initialisation d'un tableau d'erreurs
-		$errors = [];
+	if(isset($_GET['action'])) {
+	$gameName = htmlentities($_GET['search']); // Valeur de l'input text (string)
+	$platforms = intval($_GET['platforms']); // Valeur de la selectbox (int)
 
 	
 
-	$query = $pdo->prepare('INSERT INTO games(name, description, url_image, published_at, game_time) VALUES(?, ?, ?, ?, ?)');
-	$query->bindValue(1, $name, PDO::PARAM_STR);
-	$query->bindValue(2, $description, PDO::PARAM_STR);
-	$query->bindValue(3, $image, PDO::PARAM_STR);
-	$query->bindValue(4, $date_published, PDO::PARAM_STR);
-	$query->bindValue(5, $game_time, PDO::PARAM_STR);
 
-	
-	$result = $query->execute(array($name, $description, $image, $date_published, $game_time)); // Retourne true ou false
-		if(!$result) {
-		echo "Une erreur est survenue à l'enregistrement";
-		}
-	$results = $query->fetchAll();
 
-	header('location: catalogue.php');
-	die();
-		
+	if($platforms > 0) { // Requete pour le PC, X1 ou PS4
+		// 8. Refaire la même recherche SQL mais prendre en compte l'id de la catégorie
 
-	// Retourne de la dernière ID insérée (integer)
-	// echo $pdo->lastInsertId();
 
-	// Compte le nbr d'enregistrement affecté par la dernière requête
-	// echo $query->rowCount();
+		$query = $pdo->prepare('SELECT games.*, platforms.name as platform_name FROM games
+								INNER JOIN platforms ON games.platform_id = platforms.id
+								WHERE (games.name LIKE :search)  AND (games.platforms_id = :platforms)');
+		$query->bindValue(':search', '%'.$gameName.'%', PDO::PARAM_STR);
+		$query->bindValue(':platforms', $platforms, PDO::PARAM_INT);
+		$query->execute();
+		$results = $query->fetchAll();
+
+		print_r($results);
+
+
+
+	}
+	else { // Requete pour "Tous"
+
+		// 6. Préparer et binder la value search pour faire la requête SQL adéquate sur le champs title
+		// et description de la table videos (tester avec phpMyAdmin la requête)
+
+		// 7. Modifier la requête pour faire la jointure avec la table categories (INNER JOIN)
+
+		$query = $pdo->prepare('SELECT games.*, platforms.name as platform_name FROM games
+								INNER JOIN platforms ON games.platform_id = platforms.id
+								WHERE (games.name LIKE :search) AND (games.platform_id = :platforms)');
+								
+		$query->bindValue(':search', '%'.$gameName.'%', PDO::PARAM_STR);
+		$query->bindValue(':platforms', $platforms, PDO::PARAM_INT);
+		$query->execute();
+		$results = $query->fetchAll();
+	}
+
+
 
 }
+
+
+
+
+
+
+
 
 
 ?>
@@ -131,34 +125,17 @@ if (isset($_POST['action']) && ($_POST['action'] == 'create')) {
 				<hr />
 					<form id="search-form" method="GET" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 						<div class="form-group">
-							<label for="GameName">Rechercher un jeu</label>
-							<input type="text" class="form-control" id="GameName" name="GameName" />
+							<label for="search">Rechercher un jeu</label>
+							<input type="text" class="form-control" id="search" name="search" />
 						</div>
 
 						<div>
-							<label>Plateforme</label>
-							<select class="form-control">
-							<option>Tous</option>
-							<option>Xbox One</option>
-							<option>PC</option>
-							<option>PS4</option>
-							</select>							
-						</div>
-						<br>
-
-						<div >
-							<label>Type de jeu</label>
-							<select class="form-control">
-							<option>Tous</option>
-							<option>RPG</option>
-							<option>FPS</option>
-							<option>Stratégie</option>
-							<option>Gestion</option>
-							<option>Combat</option>
-							<option>Action</option>
-							<option>Aventure</option>
-							<option>Sport</option>
-							<option>Course</option>
+							<label for="platforms">Plateforme</label>
+							<select class="form-control" id="platforms" name="platforms">
+							<option value="0">Tous</option>
+							<option value="1">PC</option>
+							<option value="2">Xbox One</option>
+							<option value="3">PS4</option>
 							</select>							
 						</div>
 						<br>
@@ -183,25 +160,19 @@ if (isset($_POST['action']) && ($_POST['action'] == 'create')) {
 				<?php if(!empty($allGames)): ?>
 					<?php foreach ($allGames as $keyGames => $games) : ?>
 						<div>
-							<table class="table">
-							
-								<tr><img id="image" src="<?php echo $games['image']; ?>" target="_blank"></img><tr>
-							
+						<label>
 
-							
-								<td>Titre </td>
-								<td><?php echo $games['name']; ?></td> 
-								<td>Description :</td>
-								<td><?php echo substr($games['description'], 0, 550); ?>...</td> 
-								<td>Date de sortie : </td>
-								<td><?php echo ($games['date_published']); ?></td>
-								<td>Temps de jeu :</td>
-								<td><?php echo ($games['game_time']); ?></td>
-								<td>aze</td>
-								<td>ddd</td>
-								
-							</table>	
+							<img id="image" src="<?php echo $games['url_img']; ?>" target="_blank"></img>														
+							<p>Titre : <?php echo $games['name']; ?></p>
+							<p>Description : <?php echo substr($games['description'], 0, 550); ?>...</p>								
+							<p>Date de sortie : <?php echo ($games['published_at']); ?></p>
+							<p>Temps de jeu : <?php echo ($games['game_time']); ?></p>								
+							<p>Disponible : <?php echo ($games['is_available']); ?></p>
+							<p>Article créé le <?php echo ($games['created_at']); ?></p>
+							<p>Article mis a jour le <?php echo ($games['updated_at']); ?></p>
 
+							<button type="submit" class="btn btn-primary" name="action" value="search">Louer</button>
+						</label>
 						</div>
 					<?php endforeach; ?>
 				<?php else: ?>

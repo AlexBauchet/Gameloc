@@ -104,7 +104,7 @@
 				$_SESSION['user'] = $resultUser;
 
 				// On redirige l'utilisateur vers la page protégé profile.php
-				header("Location: profile.php");
+				header("Location: login.php");
 				die();
 			}
 		}

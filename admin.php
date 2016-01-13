@@ -1,8 +1,10 @@
 <?php
+
 session_start();
 
 require(__DIR__.'/config/db.php');
 require(__DIR__.'/functions.php');
+
 checkLoggedIn();
 
 $page = 'Admin';
@@ -28,10 +30,10 @@ if($_SESSION['user']['role'] != 'admin') {
 	// Compter le nombre de users en bdd
 $query = $pdo->query('SELECT count(id) as total FROM users');
 $resultCount = $query->fetch();
-	$totalUsers = $resultCount['total']; // Afficher cela dans la page admin
+$totalUsers = $resultCount['total']; // Afficher cela dans la page admin
 
 
-	?>
+?>
 
 	<!DOCTYPE html>
 	<html>
@@ -64,10 +66,7 @@ $resultCount = $query->fetch();
 
 
 	<body>
-
 		<?php include(__DIR__.'/include/nav.php');?>
-
-	
 		
 			<div class="col-md-offset-1">
 

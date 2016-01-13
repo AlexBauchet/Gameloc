@@ -10,45 +10,42 @@
 	include(__DIR__.'/config/db.php');
 
 
-// echo __DIR__;
 
 
+// Affichage des jeux dans la page
 	$query = $pdo->prepare('SELECT * FROM games');
-	// $query-> bindValue(':gameName', '%'.$gameName.'%', PDO::PARAM_STR);
 	$query->execute();
-
 	$allGames = $query->fetchAll();
 
 	
-// MOTEUR DE RECHERCHE
+// // MOTEUR DE RECHERCHE
 
-if(isset($_GET['GameName'])) {
-	$GameName = $_GET['GameName'];
+// if(isset($_GET['GameName'])) {
+// 	$GameName = $_GET['GameName'];
 
-	$query = $pdo->prepare('SELECT * FROM games WHERE name LIKE ?');
-	$query->bindValue(1, '%'.$GameName.'%', PDO::PARAM_STR);
-	$query->execute();
+// 	$query = $pdo->prepare('SELECT * FROM games WHERE name LIKE ?');
+// 	$query->bindValue(1, '%'.$GameName.'%', PDO::PARAM_STR);
+// 	$query->execute();
 
-	$allGames = $query->fetchAll();
-} else {
-	$query = $pdo->prepare('SELECT * FROM games'); // Prépare la requête
-	$query->execute();
-	$allMovies = $query->fetchAll();
-}
+// 	$allGames = $query->fetchAll();
+// } else {
+// 	$query = $pdo->prepare('SELECT * FROM games'); // Prépare la requête
+// 	$query->execute();
+// 	$allMovies = $query->fetchAll();
+// }
 
-$query = $pdo->prepare('SELECT id, name FROM games'); // Prépare la requête
-$query->execute();
-$allActors = $query->fetchAll();
+// $query = $pdo->prepare('SELECT id, name FROM games'); // Prépare la requête
+// $query->execute();
+// $allGames = $query->fetchAll();
 
 
-	// RECHERCHE AVEC LA PLATEFORME ET LA DISPONIBILITE
+//	RECHERCHE AVEC LA PLATEFORME ET LA DISPONIBILITE
 
 	if(isset($_GET['action'])) {
-	$gameName = htmlentities($_GET['search']); // Valeur de l'input text (string)
+	$search = htmlentities($_GET['search']); // Valeur de l'input text (string)
 	$platforms = intval($_GET['platforms']); // Valeur de la selectbox (int)
 
 	
-
 
 
 	if($platforms > 0) { // Requete pour le PC, X1 ou PS4
@@ -57,37 +54,34 @@ $allActors = $query->fetchAll();
 
 		$query = $pdo->prepare('SELECT games.*, platforms.name as platform_name FROM games
 								INNER JOIN platforms ON games.platform_id = platforms.id
-								WHERE (games.name LIKE :search)  AND (games.platforms_id = :platforms)');
-		$query->bindValue(':search', '%'.$gameName.'%', PDO::PARAM_STR);
+								WHERE (games.name LIKE :search  AND games.platform_id = :platforms)');
+		$query->bindValue(':search', '%'.$search.'%', PDO::PARAM_STR);
 		$query->bindValue(':platforms', $platforms, PDO::PARAM_INT);
 		$query->execute();
 		$results = $query->fetchAll();
 
 		print_r($results);
 
+	 }
 
+	 	// else { // Requete pour "Tous"
 
-	}
-	else { // Requete pour "Tous"
+	// 	// 6. Préparer et binder la value search pour faire la requête SQL adéquate sur le champs title
+	// 	// et description de la table videos (tester avec phpMyAdmin la requête)
 
-		// 6. Préparer et binder la value search pour faire la requête SQL adéquate sur le champs title
-		// et description de la table videos (tester avec phpMyAdmin la requête)
+	// 	// 7. Modifier la requête pour faire la jointure avec la table categories (INNER JOIN)
 
-		// 7. Modifier la requête pour faire la jointure avec la table categories (INNER JOIN)
-
-		$query = $pdo->prepare('SELECT games.*, platforms.name as platform_name FROM games
-								INNER JOIN platforms ON games.platform_id = platforms.id
-								WHERE (games.name LIKE :search) AND (games.platform_id = :platforms)');
+	// 	$query = $pdo->prepare('SELECT games.*, platforms.name as platform_name FROM games
+	// 							INNER JOIN platforms ON games.platform_id = platforms.id
+	// 							WHERE (games.name LIKE :search) AND (games.platform_id = :platforms)');
 								
-		$query->bindValue(':search', '%'.$gameName.'%', PDO::PARAM_STR);
-		$query->bindValue(':platforms', $platforms, PDO::PARAM_INT);
-		$query->execute();
-		$results = $query->fetchAll();
-	}
+	// 	$query->bindValue(':search', '%'.$gameName.'%', PDO::PARAM_STR);
+	// 	$query->bindValue(':platforms', $platforms, PDO::PARAM_INT);
+	// 	$query->execute();
+	// 	$results = $query->fetchAll();
+	// }
 
-
-
-}
+ }
 
 
 
@@ -132,11 +126,21 @@ $allActors = $query->fetchAll();
 						<div>
 							<label for="platforms">Plateforme</label>
 							<select class="form-control" id="platforms" name="platforms">
+							
 							<option value="0">Tous</option>
 							<option value="1">PC</option>
 							<option value="2">Xbox One</option>
 							<option value="3">PS4</option>
+							
+
+					<!-- 		<?php foreach ($allGames as $keyGames => $games): ?>
+									<option value="<?php echo $games['id']; ?>" <?php if(isset($_GET['platforms']) && ($_GET['platforms'] == $platforms['id'])) echo 'selected' ?>><?php echo $platforms['name']; ?></option>
+								<?php endforeach; ?> -->
+
+						
+
 							</select>							
+
 						</div>
 						<br>
 

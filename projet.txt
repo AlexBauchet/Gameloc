@@ -24,16 +24,15 @@ Dynamiser le site
 DONE Réutiliser le cours session (pour inscription, connexion, ...)
 
 Dans le catalogue: 
-- ajouter un filtre et recherche (recherche plateforme, dispo) 
-- Tri et pagination (date ajout et ordre alphabetique)
+DONE ajouter un filtre et recherche (recherche plateforme, dispo) 
 
 BONUS
 Ajouter un forgot password et reset password
 Ajouter les compatibilités internet
+- Tri et pagination (date ajout et ordre alphabetique)
 
 
 TODOLIST
 
-approfondir la barre de recherche avec type plateforme
 ajouter dans la bdd jeu(création topic, update topic, location)
 ajouter dans la bdd user(localisation)

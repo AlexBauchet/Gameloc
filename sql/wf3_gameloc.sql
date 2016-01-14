@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 13 Janvier 2016 à 12:54
+-- Généré le :  Jeu 14 Janvier 2016 à 15:29
 -- Version du serveur :  5.6.25
 -- Version de PHP :  5.6.11
 
@@ -38,16 +38,21 @@ CREATE TABLE IF NOT EXISTS `games` (
   `updated_at` datetime DEFAULT NULL,
   `platform_id` int(10) unsigned NOT NULL,
   `owner_user_id` int(10) unsigned NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `games`
 --
 
 INSERT INTO `games` (`id`, `name`, `url_img`, `description`, `published_at`, `game_time`, `is_available`, `created_at`, `updated_at`, `platform_id`, `owner_user_id`) VALUES
-(0, 'Batman', 'public/img/batman.jpg', NULL, NULL, NULL, 1, NULL, NULL, 1, 1),
-(18, 'Call of Duty Black Ops 3', 'public/img/black-ops.jpg', NULL, NULL, NULL, 0, NULL, NULL, 2, 1),
-(19, 'The Order', 'public/img/order.jpg', NULL, NULL, NULL, 1, NULL, NULL, 3, 1);
+(0, 'Batman', 'public/img/batman.jpg', NULL, '2015-06-23 00:00:00', NULL, 1, NULL, NULL, 1, 1),
+(18, 'Call of Duty Black Ops 3', 'public/img/black-ops.jpg', NULL, NULL, 10, 1, NULL, NULL, 2, 1),
+(19, 'The Order', 'public/img/order.jpg', NULL, NULL, NULL, 1, NULL, NULL, 3, 1),
+(22, 'Halo 5', 'public/img/halo.jpg', 'Jeu de tir', '2015-10-27 00:00:00', 10, NULL, NULL, NULL, 2, 1),
+(34, 'The Witcher 3', 'public/img/witcher.png', 'rpg', '0000-00-00 00:00:00', 0, NULL, NULL, NULL, 1, 1),
+(35, 'Star Wars', 'public/img/stars-wars.png', 'fps', '0000-00-00 00:00:00', 0, NULL, NULL, NULL, 3, 1),
+(36, 'Assassin''s Creed Unity', 'public/img/unity.jpg', 'Aventure', '0000-00-00 00:00:00', 0, NULL, NULL, NULL, 2, 1),
+(37, 'Tomb Raider', 'public/img/tomb-raider.jpg', 'Action', '0000-00-00 00:00:00', 0, NULL, NULL, NULL, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -155,7 +160,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `games`
 --
 ALTER TABLE `games`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT pour la table `platforms`
 --
